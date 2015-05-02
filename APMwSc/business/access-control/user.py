@@ -10,3 +10,6 @@ class user(object):
         
     def insertUser(self,nombre):
         return True
+    
+    def deleteUser(self,nombre):
+        return true
