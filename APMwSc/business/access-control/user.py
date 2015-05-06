@@ -11,6 +11,7 @@ from model import *
 class User(object):
     
     def __init__(self):
+<<<<<<< HEAD
         name_user = ""
         
     def insertUser(self,nombre):
@@ -18,6 +19,18 @@ class User(object):
     
     def deleteUser(self,nombre):
         return true
+=======
+<<<<<<< HEAD
+        name_user = ""
+        
+    def insertUser(self,nombre):
+        return True
+    
+    def deleteUser(self,nombre):
+        return True
+=======
+        return
+>>>>>>> refs/remotes/origin/Sahid
 
     def insertUser(self,fullname, username, password, email, iddpt, idrole):
         new_user = clsUser(fullname = fullname, usernamer = username, email =email, iddpt = iddpt, idrole = idrole)
@@ -51,4 +64,8 @@ class User(object):
         else:
             db.session.deleteUser(user)
             return True
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/patriv/Tarea3
+>>>>>>> refs/remotes/origin/Sahid
