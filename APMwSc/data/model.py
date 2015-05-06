@@ -4,6 +4,9 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
 
+import sys
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '../..'))
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'apl.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')

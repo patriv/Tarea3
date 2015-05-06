@@ -3,6 +3,9 @@ Created on 30/4/2015
 
 @author: sahid
 '''
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '../..'))
 from model import *
 
 class User(object):
@@ -35,7 +38,7 @@ class User(object):
                 
         return True
     '''
-    def deleteUser(self,username):
+    def deleteUser(self,fullname):
         user = searchUser(fullname)
         if user is None:
             return False
