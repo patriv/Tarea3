@@ -9,6 +9,13 @@ import sys
 sys.path.append('../../data')
 from model import *
 
+#Declaracion de constantes
+
+const_maxUser = 16
+const_maxFullname = 16
+const_maxPassword = 16
+const_maxEmail = 30
+ 
 class user(object):
 
     def searchUser(self,username):
@@ -19,7 +26,12 @@ class user(object):
         auser = clsUser.query.filter_by(username=username).all()
         if auser == []:
             new_user = clsUser(fullname = fullname, username = username, password = password, email =email, iddpt = iddpt, idrole = idrole)
-            if (new_user.username == '' or new_user.fullname == '' or new_user.password == '' or new_user.email == '' or new_user.iddpt == None or new_user.idrole == None):
+            longUser = len(new_user.username)
+            longFullname = len(new_user.fullname)
+            longPassword = len(new_user.password)
+            longEmail = len(new_user.email)
+            if (new_user.username == '' or new_user.fullname == '' or new_user.password == '' or new_user.email == '' or new_user.iddpt == None \
+                or new_user.idrole == None or longUser>const_maxUser or longFullname>const_maxFullname or longPassword>const_maxPassword or longEmail>const_maxEmail):
                 return False
             else:
                 
