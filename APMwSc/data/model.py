@@ -2,7 +2,6 @@ import os
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.script import Shell
 from flask.ext.script import Manager
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -62,7 +61,8 @@ class clsUser(db.Model):
     def __repr__(self):
     	return '<User %r>' % self.username
 
-
+#db.create_all()
+'''
 @app.route('/', methods=['GET', 'POST'])
 def index():
 	form = NameForm()
@@ -80,7 +80,14 @@ def index():
 	return render_template('index.html',
 		form = form, name = session.get('name'),
 		known = session.get('known', False))
+'''
+#app.config.from_object(os.environ['APP_SETTINGS'])
 
+migrate = Migrate(app, db)
+manager = Manager(app)
+
+manager.add_command('db', MigrateCommand)
+'''
 if __name__ == '__main__':
     app.run()
-
+'''
