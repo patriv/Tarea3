@@ -9,12 +9,12 @@ import sys
 sys.path.append('../../data')
 from model import *
 
-class Dpt(object):
+class dpt(object):
 
     def insertDpt(self,iddpt,namedpt):
         new_dpt = clsDpt(iddpt = iddpt, namedpt = namedpt)
-        db.session.add(new_user)
-        db.commit()
+        db.session.add(new_dpt)
+        db.session.commit()
         return True
     
     def searchDtp(self,iddpt):

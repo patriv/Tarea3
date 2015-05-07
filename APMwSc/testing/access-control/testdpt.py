@@ -18,4 +18,5 @@ class ClsDptTester(unittest.TestCase):
     def test1Dptinsert(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.insertDpt(iddpt = '1',namedpt = 'computacion'))
+        print (clsDpt.query.all())
         
