@@ -65,7 +65,7 @@ class ClsUserTester(unittest.TestCase):
         user1 = user()
         self.assertTrue(user1.insertUser(fullname = 'sahid Patricia Reyes Valencia kjhdj kjhvjfdbhjdcmk', username = 'jksjdfdj__',password = '12234', email = 'xx__x@gmail.com', iddpt = 800, idrole = 45))   
     
-    #caso frontera Externa 
+    #caso frontera Interna 
     def test8UserInserFullnamet49char(self):
         user1 = user()
         self.assertTrue(user1.insertUser(fullname = 'sahid Patricia Reyes Valencia jhdj kjhvjfdbhjdcmkd', username = 'jpvkjdfuhf',password = '12234', email = 'xyyy@gmail.com', iddpt = 800, idrole = 45))
