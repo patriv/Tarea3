@@ -107,25 +107,30 @@ class ClsDptTester(unittest.TestCase):
     #Caso Frontera
     def test_18seacrhDptiddpt1(self):
         dpt1 = dpt()
-        self.assertTrue(dpt1.searchDpt(iddpt = 1))
+        self.assertNotEqual([],dpt1.searchDpt(iddpt = 1))
+        
+    #Caso Frontera
+    def test_19searchDptiddptbig(self):
+        dpt1 = dpt()
+        self.assertNotEqual([],dpt1.searchDpt(iddpt = (2**31)-1))     
     
     #Caso Malicia
-    def test_19seacrhDptiddptNoInt(self):
+    def test_20seacrhDptiddptNoInt(self):
         dpt1 = dpt()
-        self.assertFalse(dpt1.searchDpt(iddpt = ''))
+        self.assertEqual([],dpt1.searchDpt(iddpt = ''))
     
     #Caso Malicia
-    def test_20seacrhDptiddptNoParam(self):
+    def test_21seacrhDptiddptNoParam(self):
         dpt1 = dpt()
-        self.assertFalse(dpt1.searchDpt(iddpt = None))        
+        self.assertEqual([],dpt1.searchDpt(iddpt = None))        
     
     #Caso Malicia
-    def test_21seacrhDptiddpt0(self):
+    def test_22seacrhDptiddpt0(self):
         dpt1 = dpt()
-        self.assertFalse(dpt1.searchDpt(iddpt = 0))
+        self.assertEqual([],dpt1.searchDpt(iddpt = 0))
 
     #Caso Malicia
-    def test_22seacrhDptiddptnegative(self):
+    def test_23seacrhDptiddptnegative(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.searchDpt(iddpt = -8))       
 
