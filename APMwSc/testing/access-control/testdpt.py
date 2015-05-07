@@ -102,7 +102,7 @@ class ClsDptTester(unittest.TestCase):
     #Caso Frontera
     def test_17searchDpt(self):
         dpt1 = dpt()
-        self.assertTrue(dpt1.searchDpt(iddpt = 301))
+        self.assertNotEqual([],dpt1.searchDpt(iddpt = 301))
 
     #Caso Frontera
     def test_18seacrhDptiddpt1(self):
@@ -132,10 +132,44 @@ class ClsDptTester(unittest.TestCase):
     #Caso Malicia
     def test_23seacrhDptiddptnegative(self):
         dpt1 = dpt()
-        self.assertFalse(dpt1.searchDpt(iddpt = -8))       
+        self.assertEqual([],dpt1.searchDpt(iddpt = -8))       
 
+#####################################################################
         
+            #CASOS DE PRUEBA FUNCION DELETEDPT
+    #Caso Frontera
+    def test_24deleteDptTrue(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.deleteDpt(iddpt = 1))  
         
+        #Caso Frontera
+    def test_25deleteDptFalse(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.deleteDpt(iddpt = 1))  
         
+    #Caso Frontera
+    def test_26deleteDptiddptbig(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.deleteDpt(iddpt = (2**31)-1))     
+    
+    #Caso Malicia
+    def test_27deleteDptiddptNoInt(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.deleteDpt(iddpt = ''))
+    
+    #Caso Malicia
+    def test_28deleteDptiddptNoParam(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.deleteDpt(iddpt = None))        
+    
+    #Caso Malicia
+    def test_29deleteDptiddpt0(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.deleteDpt(iddpt = 0))
+
+    #Caso Malicia
+    def test_30deleteDptiddptnegative(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.deleteDpt(iddpt = -8))   
     
          

@@ -42,9 +42,14 @@ class dpt(object):
             return dpt1
     
     def deleteDpt(self,iddpt):
-        user = searchDpt(iddpt)
-        if user is None:
+        if (iddpt == '') or (iddpt == None) or iddpt <=0 or type(iddpt) != int:
             return False
         else:
-            db.session.deleteUser(dpt)
-            return True
+            adpt = clsDpt.query.filter_by(iddpt=iddpt).all()
+            if adpt == []:
+                return False
+            else:
+                for i in adpt:    
+                    db.session.delete(i)
+                db.session.commit()
+                return True
