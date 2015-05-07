@@ -1,7 +1,8 @@
 '''
 Created on 30/4/2015
 
-@author: sahid
+@author: Patricia Valencia
+         Sahid Reyes
 '''
 import sys
 sys.path.append('../../data')
