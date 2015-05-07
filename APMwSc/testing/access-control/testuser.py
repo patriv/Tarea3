@@ -163,22 +163,22 @@ class ClsUserTester(unittest.TestCase):
     #Caso Frontera 
     def test_24searchUser1Char(self):
         user1 = user()
-        self.assertTrue(user1.searchUser(username = 'a'))
+        self.assertNotEqual([],user1.searchUser(username = 'a'))
     
     #Caso Frontera
     def test_25searchUser16Char(self):
         user1 = user()
-        self.assertNotEqual([],user1.searchUser(username = ' jksjdfdjvkjdfuhf'))
+        self.assertNotEqual([],user1.searchUser(username = 'jksjdfdjvkjdfuhf'))
     
     #Caso Frontera externa
     def test_26SearchUserNotChar(self): 
         user1 = user()
-        self.assertFalse(user1.searchUser(username = ''))
+        self.assertEqual([],user1.searchUser(username = ''))
     
     #Caso Frontera externa
     def test_27searchUser17Char(self):
        user1 = user()
-       self.assertFalse(user1.searchUser(username = 'jksjdfdj vkjdfuhf'))
+       self.assertEqual([],user1.searchUser(username = 'jksjdfdj vkjdfuhf'))
        
     #Caso Esquina
     def test_28searchUserNotInsert(self):

@@ -54,39 +54,80 @@ class ClsDptTester(unittest.TestCase):
     def test8DptInsertNamedptChar51(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.insertDpt(iddpt = 300,namedpt = 'Departamento de Informacion y Tecnologia Computacio'))
-        
-    #Caso Frontera interna
-    def test9DptInsertNamedptChar49(self):
+
+    def test9DptInsertNamedptChar50(self):
         dpt1 = dpt()
-        self.assertTrue(dpt1.insertDpt(iddpt = 301,namedpt = 'Departamento de Informacion y Tecnologia Computac'))
+        self.assertTrue(dpt1.insertDpt(iddpt = 301,namedpt = 'Departamento de Informacion y Tecnologia Computaci'))
+  
+    #Caso Frontera interna
+    def test_10DptInsertNamedptChar49(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.insertDpt(iddpt = 302,namedpt = 'Departamento de Informacion y Tecnologia Computac'))
 
     #Caso Malicia
-    def test_60DptInsertNegative(self):
+    def test_11DptInsertNegative(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.insertDpt(iddpt = -566,namedpt = 'mecanica'))
    
-    #Caso escquina    
-######################################################################
-
-        #CASOS DE PRUEBA FUNCION SEARCHDPT
-    '''    
-    #Caso Frontera
-    def test_61searchDpt(self):
+    #Caso esquina
+    
+    def test_12DptInsertminchar(self):
         dpt1 = dpt()
-        self.assertTrue(dpt1.searchDtp(iddpt = 301))
+        self.assertFalse(dpt1.insertDpt(iddpt = 1,namedpt = 'x'))
+     
+    #caso malicia   
+    def test_13DptInsertNoparam(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.insertDpt(iddpt = '' ,namedpt = ''))
+    
+    #caso esquina
+    def test_14DptInsertmax(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.insertDpt(iddpt = (2**31) ,namedpt = 'Departamento de Informacion & Tecnologia Computaci'))
+    
+    #caso malicia   
+    def test_15DptInsertNoparamId(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.insertDpt(iddpt = None ,namedpt = ''))
+    
+    #caso malicia   
+    def test_16DptInsertNoparam(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.insertDpt(iddpt = None ,namedpt = 30))
+              
+###########################################################################
+
+    #CASOS DE PRUEBA FUNCION SEARCHDPT
         
     #Caso Frontera
-    def test_62seacrhDptiddpt1(self):
+    def test_17searchDpt(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.searchDpt(iddpt = 301))
+
+    #Caso Frontera
+    def test_18seacrhDptiddpt1(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.searchDpt(iddpt = 1))
-        
-    '''    
-   
-        
-
     
-        
-        
+    #Caso Malicia
+    def test_19seacrhDptiddptNoInt(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.searchDpt(iddpt = ''))
+    
+    #Caso Malicia
+    def test_20seacrhDptiddptNoParam(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.searchDpt(iddpt = None))        
+    
+    #Caso Malicia
+    def test_21seacrhDptiddpt0(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.searchDpt(iddpt = 0))
+
+    #Caso Malicia
+    def test_22seacrhDptiddptnegative(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.searchDpt(iddpt = -8))       
 
         
         

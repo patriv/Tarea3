@@ -20,8 +20,8 @@ class user(object):
     
     def searchUser(self,username):
         long_username = len(username)
-        if (username == '') or long_username > 16:
-            return False
+        if (username == '') or long_username > 16 or type(username) != str:
+            return []
         else:
             auser = clsUser.query.filter_by(username=username).all()
             return auser
