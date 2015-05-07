@@ -17,7 +17,7 @@ const_maxPassword = 16
 const_maxEmail = 30
  
 class user(object):
-
+    
     def searchUser(self,username):
         long_username = len(username)
         if (username == '') or long_username > 16:
@@ -38,19 +38,22 @@ class user(object):
                 or new_user.idrole == None or longUser>const_maxUser or longFullname>const_maxFullname or longPassword>const_maxPassword or longEmail>const_maxEmail):
                 return False
             else:
-                
                 db.session.add(new_user)
                 db.session.commit()
                 return True
         else:
             return False
-
-      
+    
     def deleteUser(self,username):
-        auser = self.searchUser(username)
-        if auser == []:
+        long_username = len(username)
+        if (username == '') or long_username > 16:
             return False
         else:
-            db.session.delete(auser)
-            db.session.commit()
-            return True
+            auser = clsUser.query.filter_by(username=username).all()
+            if auser == []:
+                return False
+            else:
+                for i in auser:    
+                    db.session.delete(i)
+                db.session.commit()
+                return True
