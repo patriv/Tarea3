@@ -12,15 +12,19 @@ from model import *
 #Declaracion de constantes
 
 const_maxUser = 16
-const_maxFullname = 16
+const_maxFullname = 50
 const_maxPassword = 16
 const_maxEmail = 30
  
 class user(object):
 
     def searchUser(self,username):
-        auser = clsUser.query.filter_by(username=username)
-        return auser
+        long_username = len(username)
+        if (username == '') or long_username > 16:
+            return False
+        else:
+            auser = clsUser.query.filter_by(username=username).all()
+            return auser
 
     def insertUser(self, fullname, username, password, email, iddpt, idrole):
         auser = clsUser.query.filter_by(username=username).all()
@@ -41,13 +45,12 @@ class user(object):
         else:
             return False
 
-    
-
-    
+      
     def deleteUser(self,username):
-        auser = searchUser(username)
-        if auser is None:
+        auser = self.searchUser(username)
+        if auser == []:
             return False
         else:
             db.session.delete(auser)
+            db.session.commit()
             return True

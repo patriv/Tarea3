@@ -7,19 +7,23 @@ from flask.ext.script import Manager
 import sys
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '../..'))
 
+#Conexion con la base de datos
 basedir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'apl.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 app = Flask(__name__)
+
 app.config['SQLALCHEMY_DATABASE_URI'] =\
 	'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 db = SQLAlchemy(app)
 
+#Descripcion de la Base de Datos
+
+#Declaracion del modelo Departamento
 class clsDpt(db.Model):
      __tablename__ = 'dpt'
-
      iddpt = db.Column(db.Integer, primary_key=True)
      namedpt = db.Column(db.String(50), unique=True)
      user_dpt = db.relationship('clsUser',backref='dpt',lazy = 'dynamic')
@@ -31,6 +35,7 @@ class clsDpt(db.Model):
      def __repr__(self):
         return '<Dpt %r>' % self.namedpt
 
+#Declaracion del modelo Role
 class clsRole(db.Model):
    __tablename__ = 'roles'
    idrole = db.Column(db.Integer, primary_key=True)
@@ -44,6 +49,7 @@ class clsRole(db.Model):
    def __repr__(self):
       return '<Role %r>' % self.namerole
 
+#Declaracion del modelo Usuario
 class clsUser(db.Model): 
     __tablename__ = 'user'
     fullname = db.Column(db.String(50))
@@ -70,5 +76,5 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
-	db.drop_all()
-	db.create_all()
+	db.drop_all() #Borramos la base de datos
+	db.create_all() #Creamos la base de datos
