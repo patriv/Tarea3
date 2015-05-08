@@ -38,6 +38,24 @@ class role(object):
         else:
             return False
     
+    def updateRole(self,idrole,namerole):
+        if namerole == None:
+            return False
+        else:
+            arole = clsRole(idrole = idrole, namerole = namerole)
+            if (type(idrole) != int or idrole == None or len(namerole)<=minIdrole \
+                or namerole == '' or len(namerole) > maxNameRole or arole.namerole not in roles):
+                return False
+            else:
+                rolel = clsRole.query.filter_by(idrole=idrole).all()                
+                if rolel == []:
+                    return False
+                else:
+                    role1 = clsRole.query.filter_by(idrole=idrole).first()
+                    role1.namerole = namerole
+                    db.session.commit()
+                    return True
+                
     #Metodo que busca un role, dado su id    
     def searchRole(self,idrole): 
         if (idrole == '') or (idrole == None) or idrole <=0 or type(idrole) != int:
