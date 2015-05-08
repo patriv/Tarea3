@@ -132,12 +132,58 @@ class ClsDptTester(unittest.TestCase):
     #Caso Malicia
     def test_23seacrhDptiddptnegative(self):
         dpt1 = dpt()
-        self.assertEqual([],dpt1.searchDpt(iddpt = -8))       
+        self.assertEqual([],dpt1.searchDpt(iddpt = -8))
+               
+###################################################################################
 
-#####################################################################
+    #CASOS DE PRUEBA FUNCION UPDATEDPT
+
+    def test_23_1updateDptTrue(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Ing.Computacion!!!'))
+    
+    def test_23_2updateDptFalse(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 2, namedpt = 'Ing.Computacion!!!'))
+            
+    def test_23_3updateDpt49(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de Informacion & Tecnologia en Compu'))
+       
+    def test_23_4updateDpt50(self):
+        dpt1 = dpt()
+        self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de ingieniria de computacion y techno'))
+                
+    def test_23_5updateDpt51(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = 'departamento of InformacIon & Tecnologia computacio'))
+                
+    def test_23_6updateDptNoChar(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = ''))
+    
+    def test_23_6updateDptNone(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = None))
+
+    def test_23_7updateDptNoidNoname(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 0, namedpt = ''))
+    
+    def test_23_8updateDptNoparam(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = None, namedpt = ''))
         
-            #CASOS DE PRUEBA FUNCION DELETEDPT
+    def test_23_9updateDptRegName(self):
+        dpt1 = dpt()
+        self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de ingieniria de computacion y techno'))
+    
+###################################################################################
+        
+    #CASOS DE PRUEBA FUNCION DELETEDPT
+    
     #Caso Frontera
+    
     def test_24deleteDptTrue(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.deleteDpt(iddpt = 1))  
@@ -172,4 +218,4 @@ class ClsDptTester(unittest.TestCase):
         dpt1 = dpt()
         self.assertFalse(dpt1.deleteDpt(iddpt = -8))   
     
-         
+    ################################################################################     

@@ -34,6 +34,23 @@ class dpt(object):
         else:
             return False
     
+    def updateDpt(self,iddpt,namedpt):
+        if namedpt == None:
+            return False
+        else:
+            adptl = clsDpt.query.filter_by(iddpt=iddpt).all()
+            if (adptl == [] or len(namedpt)<= minIddpt or len(namedpt)>maxNameDpt or namedpt == '' or namedpt == None or type(namedpt) != str):
+                return False
+            else:
+                adptl1 = clsDpt.query.filter_by(namedpt=namedpt).all()
+                if adptl1 == []:
+                    adpt = clsDpt.query.filter_by(iddpt=iddpt).first()
+                    adpt.namedpt = namedpt
+                    db.session.commit()
+                    return True
+                else:
+                    return False
+            
     def searchDpt(self,iddpt): 
         if (iddpt == '') or (iddpt == None) or iddpt <=0 or type(iddpt) != int:
             return []
