@@ -1,11 +1,19 @@
+'''
+Created on 30/4/2015
+
+@author: Patricia Valencia
+         Sahid Reyes
+'''
+
+#Se importn las librerias necesarias
 import os
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.script import Manager
-
 import sys
-sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/' + '../..'))
+from sqlalchemy.sql.schema import CheckConstraint
+
 
 #Conexion con la base de datos
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -41,6 +49,8 @@ class clsRole(db.Model):
    idrole = db.Column(db.Integer, primary_key=True)
    namerole = db.Column(db.String(50), unique=True)
    user_role = db.relationship('clsUser',backref='role',lazy = 'dynamic')
+   CheckConstraint(namerole in ('Product Owner','Scrum Master', 'Team member'), name='check_namerole')
+      
    
    def __init__(self, idrole, namerole):
    		self.idrole = idrole
