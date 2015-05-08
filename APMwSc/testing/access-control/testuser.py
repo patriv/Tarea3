@@ -193,45 +193,88 @@ class ClsUserTester(unittest.TestCase):
     def test_29searchUser8Char(self):
         user1 = user()
         self.assertNotEqual([],user1.searchUser(username = 'wiekfprm'))
-     
-     
+    
+    #caso Malicia 
+    def test_29_1searchUserNoChar(self):
+        user1 = user()
+        self.assertEqual([],user1.searchUser(username = ''))
+        
+    def test_29_2searchUserNoParam(self):
+        user1 = user()
+        self.assertEqual([],user1.searchUser(username = None))
+   
     ###############################################################################################    
  
+     #CASOS DE PRUEBA FUNCION DELETEUSER
+     
+    def test_30updateUserTrue(self):
+        user1 = user()
+        self.assertTrue(user1.updateUser(new_fullname = 'x', username = 'ehfah',new_password = 'ldowqeq', new_email = 'oifhweief@ef', new_iddpt = 9, new_idrole = 1))
+
+    def test_30_1updateUserFalse(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = None, username = 'ehfah',new_password = 'ldowqeq', new_email = 'oifhweiofw', new_iddpt = 9, new_idrole = 1))
+
+    def test_30_2updateUserTrue(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'y', username = 'ehfah',new_password = None, new_email = 'oieeiofefw', new_iddpt = 9, new_idrole = 1))
+    
+    def test_30_3updateUserTrue(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'loq', username = 'ehfah',new_password = 'ldowqeq', new_email = '', new_iddpt = 9, new_idrole = 2))
+                         
+    def test_30_4updateUserTrue(self):
+        user1 = user()
+        self.assertTrue(user1.updateUser(new_fullname = 'loq', username = 'ehfah',new_password = '1234567891012wd', new_email = 'fwfwfe', new_iddpt = 9, new_idrole = 4))
+
+    def test_30_5updateUserTrue(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = 'ehfah',new_password = '12345612wd', new_email = 'fwfefwfe', new_iddpt =5000, new_idrole = 4000))
+
+    ################################################################################################
     #CASOS DE PRUEBA FUNCION DELETEUSER
      
-    #Caso Frontera
-    def test_30UserDeleteTrue(self):
-        user1 = user()
-        self.assertTrue(user1.deleteUser(username = 'wiekfprm'))
-     
-    #caso Frontera     
-    def test_31UserDeleteFalse(self):
-        user1 = user()
-        self.assertFalse(user1.deleteUser(username = 'wiekfprm'))
-     
-    #caso malicia    
-    def test_32UserDeleteNoUser(self):
-        user1 = user()
-        self.assertFalse(user1.deleteUser(username = ''))
-     
-    #caso frontera Interna 
-    def test_33UserDelete1char(self):
-        user1 = user()
-        self.assertTrue(user1.deleteUser(username = 'a'))
-     
-    #caso frontera     
-    def test_34UserDelete16char(self):
-        user1 = user()
-        self.assertTrue(user1.deleteUser(username = 'jksjdfdjvkjdfuhf'))
-             
-    #Caso frontera Externa        
-    def test_35UserDelete17char(self):
-        user1 = user()
-        self.assertFalse(user1.deleteUser(username = 'jksjdfdj vkjdfuhf'))
-             
-    #caso frontera Interna 
-    def test_36UserDelete15char(self):
-        user1 = user()
-        self.assertTrue(user1.deleteUser(username = 'wjfr9olpsmfkreo')) 
-     
-        
+#     #Caso Frontera
+#     def test_40UserDeleteTrue(self):
+#         user1 = user()
+#         self.assertTrue(user1.deleteUser(username = 'wiekfprm'))
+#      
+#     #caso Frontera     
+#     def test_41UserDeleteFalse(self):
+#         user1 = user()
+#         self.assertFalse(user1.deleteUser(username = 'wiekfprm'))
+#      
+#     #caso malicia    
+#     def test_42UserDeleteNoUser(self):
+#         user1 = user()
+#         self.assertFalse(user1.deleteUser(username = ''))
+#      
+#     #caso frontera Interna 
+#     def test_43UserDelete1char(self):
+#         user1 = user()
+#         self.assertTrue(user1.deleteUser(username = 'a'))
+#      
+#     #caso frontera     
+#     def test_44UserDelete16char(self):
+#         user1 = user()
+#         self.assertTrue(user1.deleteUser(username = 'jksjdfdjvkjdfuhf'))
+#              
+#     #Caso frontera Externa        
+#     def test_45UserDelete17char(self):
+#         user1 = user()
+#         self.assertFalse(user1.deleteUser(username = 'jksjdfdj vkjdfuhf'))
+#              
+#     #caso frontera Interna 
+#     def test_46UserDelete15char(self):
+#         user1 = user()
+#         self.assertTrue(user1.deleteUser(username = 'wjfr9olpsmfkreo')) 
+#      
+#     #caso Malicia
+#     def test_47UserDeleteNoParam(self):
+#         user1 = user()
+#         self.assertFalse(user1.deleteUser(username = None))     
+#     
+#     #caso Malicia
+#     def test_48UserDeleteNoChar(self):
+#         user1 = user()
+#         #self.assertFalse(user1.deleteUser(username = '')) 

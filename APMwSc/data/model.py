@@ -34,7 +34,7 @@ class clsDpt(db.Model):
      __tablename__ = 'dpt'
      iddpt = db.Column(db.Integer, primary_key=True)
      namedpt = db.Column(db.String(50), unique=True)
-     user_dpt = db.relationship('clsUser',backref='dpt',lazy = 'dynamic')
+     user_dpt = db.relationship('clsUser',backref='dpt',lazy = 'dynamic',cascade = "all, delete, delete-orphan")
 
      def __init__(self, iddpt, namedpt):
      	self.iddpt = iddpt
@@ -48,7 +48,7 @@ class clsRole(db.Model):
    __tablename__ = 'roles'
    idrole = db.Column(db.Integer, primary_key=True)
    namerole = db.Column(db.String(50), unique=True)
-   user_role = db.relationship('clsUser',backref='role',lazy = 'dynamic')
+   user_role = db.relationship('clsUser',backref='role',lazy = 'dynamic',cascade = "all, delete, delete-orphan")
    CheckConstraint(namerole in ('Product Owner','Scrum Master', 'Team member'), name='check_namerole')
       
    

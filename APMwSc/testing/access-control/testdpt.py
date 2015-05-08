@@ -187,7 +187,7 @@ class ClsDptTester(unittest.TestCase):
     def test_23_9updateDptRegName(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de ingieniria de computacion y techno'))
-    
+'''    
 ###################################################################################
         
     #CASOS DE PRUEBA FUNCION DELETEDPT
@@ -228,4 +228,5 @@ class ClsDptTester(unittest.TestCase):
         dpt1 = dpt()
         self.assertFalse(dpt1.deleteDpt(iddpt = -8))   
     
-    ################################################################################     
+    ################################################################################
+'''     

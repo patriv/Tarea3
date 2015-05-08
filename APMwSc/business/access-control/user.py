@@ -15,7 +15,8 @@ const_maxUser = 16
 const_maxFullname = 50
 const_maxPassword = 16
 const_maxEmail = 30
- 
+const_min_long = 1
+
 class user(object):
     
     def searchUser(self,username):
@@ -51,16 +52,47 @@ class user(object):
             else:
                 return False
         
-    def deleteUser(self,username):
-        long_username = len(username)
-        if (username == '') or long_username > 16:
+    def updateUser(self, new_fullname, username, new_password, new_email, new_iddpt, new_idrole):       
+        if (username == None or username == ''):
             return False
         else:
             auser = clsUser.query.filter_by(username=username).all()
             if auser == []:
                 return False
             else:
-                for i in auser:    
-                    db.session.delete(i)
-                db.session.commit()
-                return True
+                auser = clsUser.query.filter_by(username=username).first()
+                if (new_fullname == None or new_password == None or new_email == None or  new_iddpt == None\
+                    or new_idrole == None):
+                    return False
+                else:
+                    longFullname = len(new_fullname)
+                    longPassword = len(new_password)
+                    longEmail = len(new_email)
+                    if (longFullname>const_maxFullname or longPassword>const_maxPassword or longEmail>const_maxEmail\
+                        or longFullname<const_min_long or longPassword<const_min_long or longEmail<const_min_long):
+                        return False
+                    else:
+                        auser.fullname = new_fullname
+                        auser.password = new_password
+                        auser.email = new_email
+                        auser.iddpt = new_iddpt
+                        auser.idrole= new_idrole
+                        db.session.commit()
+                        return True
+                        
+    def deleteUser(self,username):
+        if username == None:
+            return False
+        else:
+            long_username = len(username)
+            if (username == '') or long_username > 16:
+                return False
+            else:
+                auser = clsUser.query.filter_by(username=username).all()
+                if auser == []:
+                    return False
+                else:
+                    for i in auser:    
+                        db.session.delete(i)
+                    db.session.commit()
+                    return True
