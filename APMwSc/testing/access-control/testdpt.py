@@ -138,42 +138,52 @@ class ClsDptTester(unittest.TestCase):
 
     #CASOS DE PRUEBA FUNCION UPDATEDPT
 
+    #caso Frontera
     def test_23_1updateDptTrue(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Ing.Computacion!!!'))
     
+    #caso Frontera
     def test_23_2updateDptFalse(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 2, namedpt = 'Ing.Computacion!!!'))
-            
+    
+    #caso Frontera        
     def test_23_3updateDpt49(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de Informacion & Tecnologia en Compu'))
        
+    #caso Frontera
     def test_23_4updateDpt50(self):
         dpt1 = dpt()
         self.assertTrue(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de ingieniria de computacion y techno'))
                 
+    #caso Frontera
     def test_23_5updateDpt51(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = 'departamento of InformacIon & Tecnologia computacio'))
-                
+    
+    #caso Frontera            
     def test_23_6updateDptNoChar(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = ''))
     
+    #caso Malicia
     def test_23_6updateDptNone(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = None))
 
+    #caso Malicia
     def test_23_7updateDptNoidNoname(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 0, namedpt = ''))
     
+    #caso Malicia
     def test_23_8updateDptNoparam(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = None, namedpt = ''))
         
+    #caso Frontera    
     def test_23_9updateDptRegName(self):
         dpt1 = dpt()
         self.assertFalse(dpt1.updateDpt(iddpt = 1, namedpt = 'Departamento de ingieniria de computacion y techno'))
