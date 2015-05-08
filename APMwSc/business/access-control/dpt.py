@@ -16,26 +16,29 @@ maxNameDpt = 50
 class dpt(object):
 
     def insertDpt(self,iddpt,namedpt):
-        adpt = clsDpt.query.filter_by(iddpt=iddpt).all()
-        if (adpt == []):
-            new_dpt = clsDpt(iddpt = iddpt, namedpt = namedpt)
-            #Definimos la longitud de namedpt
-            if  type(namedpt) != str:
-                return False
-            else:
-                long_namedpt=len(new_dpt.namedpt)
-                if (type(iddpt) == str or new_dpt.iddpt == None or new_dpt.iddpt <= minIddpt \
-                        or new_dpt.namedpt == '' or long_namedpt > maxNameDpt):
+        if type(iddpt) != int:
+            return False
+        else:
+            adpt = clsDpt.query.filter_by(iddpt=iddpt).all()
+            if (adpt == []):
+                new_dpt = clsDpt(iddpt = iddpt, namedpt = namedpt)
+                #Definimos la longitud de namedpt
+                if  type(namedpt) != str:
                     return False
                 else:
-                    db.session.add(new_dpt)
-                    db.session.commit()
-                    return True
-        else:
-            return False
+                    long_namedpt=len(new_dpt.namedpt)
+                    if (type(iddpt) == str or new_dpt.iddpt <= minIddpt \
+                            or new_dpt.namedpt == '' or long_namedpt > maxNameDpt):
+                        return False
+                    else:
+                        db.session.add(new_dpt)
+                        db.session.commit()
+                        return True
+            else:
+                return False
     
     def updateDpt(self,iddpt,namedpt):
-        if namedpt == None:
+        if type(namedpt) != str:
             return False
         else:
             adptl = clsDpt.query.filter_by(iddpt=iddpt).all()
