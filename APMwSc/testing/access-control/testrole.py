@@ -11,7 +11,7 @@ import unittest
 
 from role import *
 
-class ClsRoleTester(unittest.TestCase):
+class clsRoleTester(unittest.TestCase):
 
     #CASOS DE PRUEBA FUNCION INSERTROLE
     

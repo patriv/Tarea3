@@ -11,7 +11,7 @@ import unittest
 
 from dpt import *
 
-class ClsDptTester(unittest.TestCase):
+class clsDptTester(unittest.TestCase):
     
     #CASOS DE PRUEBA FUNCION INSERTDPT
     

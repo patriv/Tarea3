@@ -13,7 +13,7 @@ from user import *
 from dpt import *
 from role import *
 
-class ClsUserTester(unittest.TestCase):
+class clsUserTester(unittest.TestCase):
     
     #CASOS DE PRUEBA FUNCION INSERTUSER
 
