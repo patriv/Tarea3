@@ -248,6 +248,51 @@ class clsUserTester(unittest.TestCase):
         user1 = user()
         self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = 'ehfah',new_password = '1231612wd', new_email = 'fwfefwfe', new_iddpt =5000, new_idrole = 4000))
    
+    def test_35_6updateUserNoId(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = 'ehfah',new_password = '1231612wd', new_email = 'fwf@2efwfe', new_iddpt =5000, new_idrole = 1))
+  
+    def test_35_7updateUserNoRole(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = 'ehfah',new_password = '1231612wd', new_email = 'fwfe!_fwfe', new_iddpt =1, new_idrole = 4000)) 
+    
+    def test_35_8updateUserChar(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = 'ehfah',new_password = '1231612wd', new_email = 'fwfe@fwfe', new_iddpt =1, new_idrole = 'a'))    
+    
+    def test_35_9updateUserNoUser(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'lfoq', username = None,new_password = '1231612wd', new_email = 'fwf@@efwfe', new_iddpt =1, new_idrole = 1))
+    
+    def test_36_1updateUserBlancs(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = '', username = '',new_password = '', new_email = '', new_iddpt = None, new_idrole = None))
+    
+    def test_36_2updateUserNoParam(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = None, username = None, new_password = None, new_email = None, new_iddpt =None, new_idrole = None))
+    
+    def test_36_3updateUserNoChange(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = None, username = 'ehfah',new_password = None, new_email = None, new_iddpt = None, new_idrole = None))
+    
+    def test_36_4updateUsermaxchar(self):
+        user1 = user()
+        self.assertTrue(user1.updateUser(new_fullname = 'mas cincuenta caracteres en el nombre con espacios', username = 'ehfah',new_password = 'condieciseischar', new_email = 'cuenta30charpara@prueba.usb.ve', new_iddpt =1, new_idrole = 1))
+
+    def test_36_5updateUserFronteraExt(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'mas cincuenta caracteres en el nombre con espacios_', username = 'ehfah',new_password = 'condieci_seischar', new_email = 'cuenta30charpara@_prueba.usb.ve', new_iddpt =1, new_idrole = 1))
+    
+    def test_36_6updateUserFronteraInt(self):
+        user1 = user()
+        self.assertTrue(user1.updateUser(new_fullname = 'mas cincuenta caracteres en el nombre con espacio', username = 'ehfah',new_password = 'condieciseischa', new_email = 'cuenta30charpar@prueba.usb.ve', new_iddpt =1, new_idrole = 1))
+    
+    def test_36_7updateUserNotfound(self):
+        user1 = user()
+        self.assertFalse(user1.updateUser(new_fullname = 'mas cincuenta caracteres ', username = 'prueba_admin',new_password = 'condieciseischar', new_email = 'cuentanueva@prueba.usb.ve', new_iddpt =1, new_idrole = 1))
+    
+    
     ################################################################################################
     #CASOS DE PRUEBA FUNCION DELETEUSER
         
