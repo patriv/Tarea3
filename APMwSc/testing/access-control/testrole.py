@@ -240,7 +240,7 @@ class clsRoleTester(unittest.TestCase):
     
    
    
-'''   
+
     ######################################################################        
     #CASOS DE PRUEBA FUNCION DELETEROLE
     
@@ -278,4 +278,3 @@ class clsRoleTester(unittest.TestCase):
     def test_30deleteRoleidrolenegative(self):
         role1 = role()
         self.assertFalse(role1.deleteRole(idrole = -8))   
-'''
